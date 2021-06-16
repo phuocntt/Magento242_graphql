@@ -1,0 +1,40 @@
+
+type Query {
+    getReviewByProduct(
+        product_id: Int @doc(description: "")
+    ):ReviewsOutput @resolver(class: "\\Snaptec\\Review\\Model\\Resolver\\Reviews") @doc(description: "")
+}
+
+type ReviewsOutput {
+    avg_value: [RatingSummary] @doc(description: "The avg rating of the review."),
+    item: [Review]
+}
+
+type RatingSummary {
+    primary_id: Int @doc(description: "")
+    store_id: Int @doc(description: "")
+    reviews_count: Int @doc(description: "")
+    rating_summary: Int @doc(description: "")
+}
+
+type Review {
+    review_id: Int,
+    created_at: String @doc(description: "Timestamp indicating when the category was created."),
+    entity_id: Int @doc(description: "Review entity ID."),
+    status_id: Int @doc(description: "An ID that xác định. the status."),
+    detail_id: Int @doc(description: "An ID that identifies the review detail."),
+    title: String @doc(description: "The title of the review."),
+    detail: String @doc(description: "The detail of the review."),
+    nickname: String @doc(description: "The nickname of the reviewer."),
+    customer_id: Int @doc(description: "An ID that identifies the customer."),
+    rating: [Rating] @doc(description: "")
+}
+
+type Rating {
+    vote_id: Int @doc(description: "")
+    rating_id: Int @doc(description: "")
+    review_id: Int @doc(description: "")
+    percent: Int @doc(description: "")
+    value: Int @doc(description: "")
+}
+

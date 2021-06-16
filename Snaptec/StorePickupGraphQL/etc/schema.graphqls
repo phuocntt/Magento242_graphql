@@ -1,0 +1,22 @@
+type PickUpStore {
+    id: ID @doc(description: "")
+    name: String @doc(description: "")
+    street: String @doc(description: "")
+    streetNumber: String @doc(description: "")
+    postCode: String @doc(description: "")
+    city: String @doc(description: "")
+    latitide: String @doc(description: "")
+    longitude: String @doc(description: "")
+}
+
+type PickUpStoresOuput {
+    totalCount: Int @doc(description: "")
+    items: [PickUpStore] @doc(description: "")
+}
+
+type Query {
+    pickUpStores (
+        pageSize: Int = 5 @doc(description: "How many item should show on the page")
+        currentPage: Int = 1 @doc(description: "Allows to ussing paging it start with 1")
+    ):PickUpStoresOuput @resolver( class: "\\Snaptec\\StorePickupGraphQL\\Model\\Resolver\\PickUpStores") @doc(description: "The Impelemention to resolve PickUp stores")
+}
