@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="Snaptec_Productlist::snaptec_mobile" title="PWA" module="Snaptec_Productlist"  sortOrder="20" dependsOnModule="Snaptec_Productlist" resource="Snaptec_Productlist::general"/>
+        <add id="Snaptec_Productlist::themes" title="Themes" module="Snaptec_Productlist" sortOrder="200" parent="Snaptec_Productlist::snaptec_mobile" resource="Snaptec_Productlist::themes"/>
+        <add id="Snaptec_Productlist::productlist" title="Product Lists" module="Snaptec_Productlist" sortOrder="20" parent="Snaptec_Productlist::themes" action="productlist/index/" resource="Snaptec_Productlist::manage"/>
+    </menu>
+</config>

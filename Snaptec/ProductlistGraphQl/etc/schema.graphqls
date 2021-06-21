@@ -1,0 +1,26 @@
+type Query {
+    getProductList(input: getProductListInput): getProductListOutput @resolver(class: "Snaptec\\ProductlistGraphQl\\Model\\Resolver\\GetProductList") @doc(description:"Returns product list data")
+}
+
+input getProductListInput {
+    product_list_id : Int!
+    pageSize : Int
+    currentPage : Int
+}
+
+type getProductListOutput {
+    productlist_id: Int
+    list_title: String
+    list_image: String
+    list_image_tablet: String
+    list_type: Int
+    list_products: String
+    location: Int
+    category_id: Int
+    products: ProductListOutput
+}
+
+type ProductListOutput {
+    total_count : Int @doc(description:"Total number items were returned")
+    items : [ProductInterface] @doc(description:"List item in product list")
+}
