@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <virtualType name="\Snaptec\StorePickUpGraphQL\Model\Validator\ChainQuery" type="\Snaptec\StorePickUpGraphQL\Model\Validator\Chain">
+        <arguments>
+            <argument name="validatorList" xsi:type="array">
+                <item name="pageValidator" xsi:type="object">
+                    \Snaptec\StorePickUpGraphQL\Model\Validator\Query\Page
+                </item>
+            </argument>
+        </arguments>s
+    </virtualType>
+
+    <type name="Snaptec\StorePickUpGraphQL\Model\Resolver\Query\PickUpStores">
+        <arguments>
+            <argument name="validatorChain" xsi:type="object">Snaptec\StorePickUpGraphQL\Model\Validator\ChainQuery</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\GraphQl\Query\Resolver\Argument\FieldEntityAttributesPool">
+        <arguments>
+            <argument name="attributesInstances" xsi:type="array">
+                <item name="pickup_stores" xsi:type="object">
+                    \Snaptec\StorePickUpGraphQL\Model\Resolver\FilterArgument
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>

@@ -1,22 +1,44 @@
 type PickUpStore {
-    id: ID @doc(description: "")
+    store_id: ID @doc(description: "")
+    category_id: Int @doc(description: "")
     name: String @doc(description: "")
-    street: String @doc(description: "")
-    streetNumber: String @doc(description: "")
+    address: String @doc(description: "")
     postCode: String @doc(description: "")
     city: String @doc(description: "")
-    latitide: String @doc(description: "")
-    longitude: String @doc(description: "")
+    country: String @doc(description: "")
+    phone: String @doc(description: "")
+    email: String @doc(description: "")
+    fax: String @doc(description: "")
+    website: String @doc(description: "")
+    lat: Float @doc(description: "")
+    lng: Float @doc(description: "")
+    zoom: Int @doc(description: "")
+    is_active: Int @doc(description: "")
+    created_at: String @doc(description: "")
+    updated_at: String @doc(description: "")
+    latitude: Float @doc(description: "")
+    longitude: Float @doc(description: "")
+    distance: Float @doc(description: "")
 }
 
-type PickUpStoresOuput {
+type PickUpStoresOutput {
     totalCount: Int @doc(description: "")
     items: [PickUpStore] @doc(description: "")
 }
 
+input PickupStoresFilterInput {
+    id: FilterTypeInput @doc(description: "")
+    name: FilterTypeInput @doc(description: "")
+}
+
 type Query {
-    pickUpStores (
-        pageSize: Int = 5 @doc(description: "How many item should show on the page")
+    pickUpStores(
+        pageSize: Int = 5 @doc(description: "How many items should show on the page")
         currentPage: Int = 1 @doc(description: "Allows to ussing paging it start with 1")
-    ):PickUpStoresOuput @resolver( class: "\\Snaptec\\StorePickupGraphQL\\Model\\Resolver\\PickUpStores") @doc(description: "The Impelemention to resolve PickUp stores")
+        search: String,
+        latitude: Float @doc(description: "")
+        longitude: Float @doc(description: "")
+    ):PickUpStoresOutput
+    @resolver( class: "\\Snaptec\\StorePickUpGraphQL\\Model\\Resolver\\Query\\PickUpStores")
+    @doc(description: "The Impelemention to resolve PickUp stores")
 }

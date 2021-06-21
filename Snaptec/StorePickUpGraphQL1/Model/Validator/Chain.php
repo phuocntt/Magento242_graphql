@@ -2,34 +2,30 @@
 
 declare(strict_types=1);
 
-namespace Snaptec\StorePickUpGraphQL\Model\Validator;
+namespace Snaptec\StorePickUpGraphQl\Model\Validator;
 
-use Snaptec\StorePickUpGraphQL\Api\ArgValidatorInterface;
+use Snaptec\StorePickUpGraphQl\Api\ArgValidatorInteface;
 use Magento\Framework\Exception\ValidatorException;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 
 class Chain
 {
-    /** @var ArgValidatorInterface[] */
+    /** @var array */
     private $validatorList;
 
-    /**
-     * @param ArgValidatorInterface[] $validatorList
-     */
     public function __construct(array $validatorList = [])
     {
         $this->validatorList = $validatorList;
     }
 
     /**
-     * @param array $args
-     * @throws GraphQlInputException
-     */
+    * @param array $args
+    * @throws ArgValidatorInterface
+    */
     public function validated(array $args): void
     {
-        foreach ($this->validatorList as $item) {
+        foreach($this->validatorList as $item) {
             $item->execute($args);
         }
     }
-
 }

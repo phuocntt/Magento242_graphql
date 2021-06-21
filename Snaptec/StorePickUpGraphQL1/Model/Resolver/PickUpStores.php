@@ -21,6 +21,6 @@ class PickUpStores implements ResolverInterface
 
     public function resolve(Field $field, $context, ResolveInfo $info, ?array $value = null, ?array $args = null)
     {
-        $this->validatorChain->validated($args);
+        $this->validatorChain->validated($args);    
     }
 }

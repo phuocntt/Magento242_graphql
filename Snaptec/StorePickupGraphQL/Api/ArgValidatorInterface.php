@@ -2,11 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Snaptec\StorePickUpGraphQl\Api;
+namespace Snaptec\StorePickUpGraphQL\Api;
 
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 
-Interface ArgValidatorInteface
+/**
+ * @api
+ */
+interface ArgValidatorInterface
 {
-    public function execute(array $args) : void;
+    /**
+     * @param array $args
+     * @throws GraphQlInputException
+     */
+    public function execute(array $args): void;
 }

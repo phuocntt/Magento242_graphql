@@ -4,8 +4,7 @@
     "description": "N/A",
     "type": "magento2-module",
     "require": {
-      "magento/framework": "*",
-      "lars-roettig/store-pickup": "1.0.*"
+      "magento/framework": "*"
     },
     "license": [
       "Proprietary"
@@ -15,7 +14,7 @@
         "registration.php"
       ],
       "psr-4": {
-        "Snaptec\\StorePickUpGraphQl\\": ""
+        "Snaptec\\StorePickupGraphQL\\": ""
       }
     }
   }
